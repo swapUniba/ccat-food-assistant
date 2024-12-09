@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+scikit-learn
+collection
+transformers
+torch
+scipy
+tqdm
+nltk
+openai==0.28
+langchain
+pydantic
+langchain_community

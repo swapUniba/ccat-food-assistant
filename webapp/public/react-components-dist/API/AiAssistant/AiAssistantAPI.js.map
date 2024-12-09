@@ -1,0 +1,1 @@
+{"version":3,"file":"AiAssistantAPI.js","names":["_User","AiAssistantAPI","User"],"sources":["../../../react-components/API/AiAssistant/AiAssistantAPI.jsx"],"sourcesContent":["import {_User} from \"./_User\";\n\nexport const AiAssistantAPI = {\n    User: _User\n}\n"],"mappings":"AAAA,SAAQA,KAAK,QAAO,SAAS;AAE7B,OAAO,IAAMC,cAAc,GAAG;EAC1BC,IAAI,EAAEF;AACV,CAAC","ignoreList":[]}

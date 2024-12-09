@@ -1,0 +1,111 @@
+:root{
+    --chat-room-bg-color: #dadde1;
+
+    --chat-room-message-bg-mine: #d9fdd2;
+    --chat-room-message-color-mine: #111b21;
+    --chat-room-message-link-color-mine: #027eb5;
+
+    --chat-room-message-bg-yours: #fff;
+    --chat-room-message-color-yours: #111b21;
+    --chat-room-message-link-color-yours: #027eb5;
+}
+
+.messages {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.yours {
+    align-items: flex-start;
+}
+
+.yours .message {
+    margin-right: 25%;
+    background-color: var(--chat-room-message-bg-yours);
+    color: var(--chat-room-message-color-yours);
+    position: relative;
+}
+
+.yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: var(--chat-room-message-bg-yours);
+    border-bottom-right-radius: 15px;
+}
+
+.yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: var(--chat-room-bg-color);
+    border-bottom-right-radius: 10px;
+}
+
+.mine {
+    align-items: flex-end;
+}
+
+.mine .message {
+    color: var(--chat-room-message-color-mine);
+    margin-left: 25%;
+    background: var(--chat-room-message-bg-mine);
+    position: relative;
+}
+
+.mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -10px;
+    height: 20px;
+    width: 20px;
+    background: var(--chat-room-message-bg-mine);
+    border-bottom-left-radius: 15px;
+}
+
+.mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: var(--chat-room-bg-color);
+    border-bottom-left-radius: 10px;
+}
+
+.mine .message a{
+    color: var(--chat-room-message-link-color-mine);
+    text-decoration: underline;
+}
+
+.yours .message a{
+    color: var(--chat-room-message-link-color-yours);
+    text-decoration: underline;
+}
+
+
+.message .metadata {
+    font-size: 0.65rem;
+    text-align: right;
+}

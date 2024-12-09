@@ -1,0 +1,27 @@
+{
+  "require": {
+    "phpmailer/phpmailer": "^6.1",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-curl": "*",
+    "ext-zlib": "*",
+    "phpseclib/phpseclib": "^3.0",
+    "ext-mysqli": "*",
+    "ext-zip": "*",
+    "ext-soap": "*",
+    "ext-ctype": "*",
+    "ext-fileinfo": "*",
+    "ext-simplexml": "*",
+    "albocode/ccatphp-sdk": "0.2.0"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2"
+    }
+  },
+  "require-dev": {
+    "ext-dom": "*",
+    "phpunit/phpunit": "^8"
+  }
+}

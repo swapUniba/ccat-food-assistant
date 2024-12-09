@@ -1,0 +1,87 @@
+services:
+  cheshire-cat-core:
+    image: ghcr.io/cheshire-cat-ai/core:1.7.1
+    container_name: food_print_cheshire_cat_core
+    depends_on:
+      - cheshire-cat-vector-memory
+    env_file:
+      - .env
+    ports:
+      - 1865:80
+    volumes:
+      - ./cat/static:/app/cat/static
+      - ./cat/plugins:/app/cat/plugins
+      - ./cat/data:/app/cat/data
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  cheshire-cat-vector-memory:
+    image: qdrant/qdrant:v1.7.1
+    container_name: food_print_cheshire_cat_vector_memory
+    expose:
+      - 6333
+    volumes:
+      - ./cat/long_term_memory/vector:/qdrant/storage
+    restart: unless-stopped
+
+#  hease:
+#    build:
+#      context: .
+#      dockerfile: hease.dockerfile
+#    container_name: hease_service
+#    ports:
+#      - "8081:8081"
+#    volumes:
+#      - ./hease/data:/app/data
+#      - ./hease/stored_data:/app/stored_data
+#      - ./hease/main.py:/app/main.py
+#    restart: unless-stopped
+#    extra_hosts:
+#      - "host.docker.internal:host-gateway"
+
+  php-app:
+    build:
+      context: .
+      dockerfile: webapp.dockerfile
+    container_name: php_app
+    working_dir: /var/www/html
+    volumes:
+      - ./webapp:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - cheshire-cat-core
+      - mysql
+    restart: unless-stopped
+    command: bash -c "composer install && apache2-foreground"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  mysql:
+    image: mysql:latest  # Use the official MySQL image
+    container_name: food_print_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=food_assistant
+      - MYSQL_PASSWORD=root
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql  # Changed to ./mysql/data for consistency
+      - ./mysql/init:/docker-entrypoint-initdb.d  # Custom init scripts if needed
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin_service
+    environment:
+      - PMA_HOST=mysql  # Changed to match the MySQL service name
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+      - PMA_PORT=3306
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+    restart: unless-stopped

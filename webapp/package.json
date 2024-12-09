@@ -1,0 +1,36 @@
+{
+  "name": "food-assistant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.16.7",
+    "prop-types": "^15.8.1",
+    "styled-components": "^6.1.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-optional-chaining": "^7.24.8",
+    "@babel/preset-react": "^7.24.7",
+    "babel-preset-react-app": "^10.0.1"
+  }
+}

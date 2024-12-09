@@ -1,0 +1,14 @@
+{
+    "base_url": "http://host.docker.internal:8888/sis-web",
+    "alternative_recipes_tool": true,
+    "compare_recipes_tool": true,
+    "search_recipes_by_ingredients_tool": true,
+    "search_recipes_by_name_tool": true,
+    "food_print_base_url": "https://foodprint.matteofusillo.com",
+    "edamam_base_url": "https://api.edamam.com",
+    "edamam_app_id": "6df380c5",
+    "edamam_app_key": "3ae7cb84c4fd8c2dca40abdf3709141e",
+    "search_engine": "Edamam",
+    "check_recipe_healthiness_tool": true,
+    "use_HeAse_library_for_alternative_recommendations": false
+}
